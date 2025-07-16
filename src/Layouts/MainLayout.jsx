@@ -1,8 +1,8 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
-import DevPanel from '../Components/DevPanel';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import DevPanel from '../components/DevPanel';
 import ScrollToTop from '../components/ScrollToTop';
 import { Toaster } from 'sonner';
 

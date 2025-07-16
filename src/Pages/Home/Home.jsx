@@ -8,9 +8,9 @@ import { useCart } from '../../Contexts/CartContext';
 import { useAuth } from '../../Contexts/AuthContext';
 import { ShoppingCart, Star, ArrowRight } from 'lucide-react';
 import { toast } from 'sonner';
-import LoginModal from '../../Components/Auth/LoginModal';
-import SignupModal from '../../Components/Auth/SignupModal';
-import HeroCarousel from '../../Components/HeroCarousel';
+import LoginModal from '../../components/Auth/LoginModal';
+import SignupModal from '../../components/Auth/SignupModal';
+import HeroCarousel from '../../components/HeroCarousel';
 import useAutoSignInPrompt from '../../hooks/useAutoSignInPrompt';
 import OrbLoader from '../../components/ui/OrbLoader';
 
