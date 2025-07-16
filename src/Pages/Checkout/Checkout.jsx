@@ -379,34 +379,34 @@ const Checkout = () => {
 
   return (
     <>
-      <Container maxWidth="xl" className="py-8">
+      <Container maxWidth="xl" className="py-4 sm:py-8 px-4 sm:px-6">
         {/* Progress Steps */}
-        <div className="flex items-center justify-center mb-8">
-          <div className="flex items-center">
-            <div className="flex items-center justify-center w-8 h-8 bg-green-500 text-white rounded-full text-sm font-medium">
+        <div className="flex items-center justify-center mb-6 sm:mb-8 overflow-x-auto">
+          <div className="flex items-center min-w-max">
+            <div className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 bg-green-500 text-white rounded-full text-xs sm:text-sm font-medium">
               ✓
             </div>
-            <span className="ml-2 font-medium text-green-600">Cart</span>
-            <ChevronRight className="mx-4 h-5 w-5 text-gray-400" />
-            <div className="flex items-center justify-center w-8 h-8 bg-black text-white rounded-full text-sm font-medium">
+            <span className="ml-1 sm:ml-2 font-medium text-green-600 text-sm sm:text-base">Cart</span>
+            <ChevronRight className="mx-2 sm:mx-4 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
+            <div className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 bg-black text-white rounded-full text-xs sm:text-sm font-medium">
               2
             </div>
-            <span className="ml-2 font-medium">Address</span>
-            <ChevronRight className="mx-4 h-5 w-5 text-gray-400" />
-            <div className="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-500 rounded-full text-sm">
+            <span className="ml-1 sm:ml-2 font-medium text-sm sm:text-base">Address</span>
+            <ChevronRight className="mx-2 sm:mx-4 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
+            <div className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 bg-gray-200 text-gray-500 rounded-full text-xs sm:text-sm">
               3
             </div>
-            <span className="ml-2 text-gray-500">Payment</span>
+            <span className="ml-1 sm:ml-2 text-gray-500 text-sm sm:text-base">Payment</span>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
           {/* Back to Cart Button */}
           <div className="lg:col-span-2 mb-4">
             <Button 
               variant="outline" 
               onClick={() => navigate('/cart')}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 w-full sm:w-auto"
             >
               <ChevronLeft className="h-4 w-4" />
               Back to Cart
@@ -417,7 +417,7 @@ const Checkout = () => {
           <div>
             <Card>
               <CardHeader>
-                <Typography variant="h5" className="font-semibold">Delivery Information</Typography>
+                <Typography variant="h5" className="font-semibold text-lg sm:text-xl">Delivery Information</Typography>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-4 -mt-4">

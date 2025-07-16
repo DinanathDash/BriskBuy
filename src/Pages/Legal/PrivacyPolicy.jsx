@@ -17,39 +17,39 @@ const PrivacyPolicy = () => {
   const lastUpdated = 'January 15, 2025';
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="container mx-auto px-4 max-w-6xl">
+    <div className="min-h-screen bg-gray-50 py-4 sm:py-8">
+      <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
-          <p className="text-lg text-gray-600 mb-2">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
+          <p className="text-base sm:text-lg text-gray-600 mb-2">
             Your privacy is important to us. This policy explains how we collect, use, and protect your information.
           </p>
-          <div className="flex items-center justify-center text-gray-500">
+          <div className="flex items-center justify-center text-gray-500 text-sm sm:text-base">
             <Calendar className="h-4 w-4 mr-2" />
             <span>Last updated: {lastUpdated}</span>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Navigation Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-sm p-6 sticky top-8">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Contents</h2>
-              <nav className="space-y-2">
+            <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 lg:sticky lg:top-8">
+              <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">Contents</h2>
+              <nav className="space-y-1 sm:space-y-2">
                 {sections.map((section) => {
                   const IconComponent = section.icon;
                   return (
                     <button
                       key={section.id}
                       onClick={() => setActiveSection(section.id)}
-                      className={`w-full flex items-center px-3 py-2 text-left rounded-lg transition-colors ${
+                      className={`w-full flex items-center px-2 sm:px-3 py-2 text-left rounded-lg transition-colors text-sm sm:text-base ${
                         activeSection === section.id
                           ? 'bg-blue-100 text-blue-700'
                           : 'text-gray-600 hover:bg-gray-100'
                       }`}
                     >
-                      <IconComponent className="h-4 w-4 mr-3" />
+                      <IconComponent className="h-3 w-3 sm:h-4 sm:w-4 mr-2 sm:mr-3" />
                       {section.title}
                     </button>
                   );
@@ -61,37 +61,37 @@ const PrivacyPolicy = () => {
           {/* Content */}
           <div className="lg:col-span-3">
             <div className="bg-white rounded-lg shadow-sm">
-              <div className="p-8">
+              <div className="p-4 sm:p-6 lg:p-8">
                 {activeSection === 'overview' && (
                   <div>
-                    <h2 className="text-2xl font-semibold text-gray-900 mb-6">Privacy Policy Overview</h2>
+                    <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">Privacy Policy Overview</h2>
                     <div className="prose prose-gray max-w-none">
-                      <p className="text-lg text-gray-600 mb-6">
+                      <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6">
                         At BriskBuy, we are committed to protecting your privacy and ensuring the security of your personal information. 
                         This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website 
                         or use our services.
                       </p>
                       
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
-                        <div className="text-center p-6 bg-blue-50 rounded-lg">
-                          <Shield className="h-12 w-12 text-blue-600 mx-auto mb-3" />
-                          <h3 className="font-semibold text-gray-900 mb-2">Data Protection</h3>
-                          <p className="text-sm text-gray-600">We use industry-standard security measures to protect your data</p>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 my-6 sm:my-8">
+                        <div className="text-center p-4 sm:p-6 bg-blue-50 rounded-lg">
+                          <Shield className="h-8 w-8 sm:h-12 sm:w-12 text-blue-600 mx-auto mb-3" />
+                          <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Data Protection</h3>
+                          <p className="text-xs sm:text-sm text-gray-600">We use industry-standard security measures to protect your data</p>
                         </div>
-                        <div className="text-center p-6 bg-green-50 rounded-lg">
-                          <Lock className="h-12 w-12 text-green-600 mx-auto mb-3" />
-                          <h3 className="font-semibold text-gray-900 mb-2">Secure Transactions</h3>
-                          <p className="text-sm text-gray-600">All payments and personal data are encrypted and secure</p>
+                        <div className="text-center p-4 sm:p-6 bg-green-50 rounded-lg">
+                          <Lock className="h-8 w-8 sm:h-12 sm:w-12 text-green-600 mx-auto mb-3" />
+                          <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Secure Transactions</h3>
+                          <p className="text-xs sm:text-sm text-gray-600">All payments and personal data are encrypted and secure</p>
                         </div>
-                        <div className="text-center p-6 bg-purple-50 rounded-lg">
-                          <Users className="h-12 w-12 text-purple-600 mx-auto mb-3" />
-                          <h3 className="font-semibold text-gray-900 mb-2">Your Control</h3>
-                          <p className="text-sm text-gray-600">You have control over your personal information and privacy settings</p>
+                        <div className="text-center p-4 sm:p-6 bg-purple-50 rounded-lg">
+                          <Users className="h-8 w-8 sm:h-12 sm:w-12 text-purple-600 mx-auto mb-3" />
+                          <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Your Control</h3>
+                          <p className="text-xs sm:text-sm text-gray-600">You have control over your personal information and privacy settings</p>
                         </div>
                       </div>
 
-                      <h3 className="text-xl font-semibold text-gray-900 mb-4">What This Policy Covers</h3>
-                      <ul className="space-y-2 text-gray-600">
+                      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">What This Policy Covers</h3>
+                      <ul className="space-y-2 text-gray-600 text-sm sm:text-base">
                         <li>• Information we collect and why we collect it</li>
                         <li>• How we use your information</li>
                         <li>• When we share information with others</li>

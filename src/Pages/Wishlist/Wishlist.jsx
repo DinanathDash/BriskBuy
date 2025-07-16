@@ -50,14 +50,14 @@ const Wishlist = () => {
 
   if (wishlistItems.length === 0) {
     return (
-      <Container maxWidth="lg" className="py-16">
+      <Container maxWidth="lg" className="py-8 sm:py-16 px-4 sm:px-6">
         <div className="text-center">
-          <Heart className="h-24 w-24 mx-auto text-gray-400 mb-6" />
-          <Typography variant="h4" className="font-bold mb-4">Your wishlist is empty</Typography>
-          <Typography variant="body1" className="text-gray-600 mb-8">
+          <Heart className="h-16 w-16 sm:h-24 sm:w-24 mx-auto text-gray-400 mb-4 sm:mb-6" />
+          <Typography variant="h4" className="font-bold mb-4 text-xl sm:text-2xl lg:text-3xl">Your wishlist is empty</Typography>
+          <Typography variant="body1" className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">
             Save items you love and check them out later.
           </Typography>
-          <Button asChild size="lg" className="mt-4">
+          <Button asChild size="lg" className="mt-4 w-full sm:w-auto">
             <Link to="/products">Start Shopping</Link>
           </Button>
         </div>
@@ -66,12 +66,12 @@ const Wishlist = () => {
   }
 
   return (
-    <Container maxWidth="lg" className="py-8">
-      <Typography variant="h4" component="h1" className="font-bold pb-8">
+    <Container maxWidth="lg" className="py-4 sm:py-8 px-4 sm:px-6">
+      <Typography variant="h4" component="h1" className="font-bold pb-6 sm:pb-8 text-xl sm:text-2xl lg:text-3xl">
         My Wishlist ({wishlistItems.length} items)
       </Typography>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
         {wishlistItems.map((item) => (
           <Card key={item.id} className="hover:shadow-lg transition-shadow">
             <CardContent className="p-0">
@@ -88,16 +88,16 @@ const Wishlist = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="absolute top-2 right-2 h-8 w-8 p-0 bg-white/80 hover:bg-white"
+                  className="absolute top-1 right-1 sm:top-2 sm:right-2 h-6 w-6 sm:h-8 sm:w-8 p-0 bg-white/80 hover:bg-white"
                   onClick={() => handleRemoveFromWishlist(item.productId)}
                 >
-                  <Trash2 className="h-4 w-4 text-red-500" />
+                  <Trash2 className="h-3 w-3 sm:h-4 sm:w-4 text-red-500" />
                 </Button>
               </div>
 
-              <div className="p-4">
+              <div className="p-2 sm:p-4">
                 <Link to={`/products/${item.productId}`}>
-                  <Typography variant="h6" className="font-semibold mb-2 line-clamp-2 hover:text-blue-600 transition-colors">
+                  <Typography variant="h6" className="font-semibold mb-2 line-clamp-2 hover:text-blue-600 transition-colors text-sm sm:text-base">
                     {item.name}
                   </Typography>
                 </Link>

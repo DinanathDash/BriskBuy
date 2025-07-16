@@ -42,38 +42,38 @@ const ShippingInfo = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="container mx-auto px-4 max-w-6xl">
+    <div className="min-h-screen bg-gray-50 py-4 sm:py-8">
+      <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Shipping Information</h1>
-          <p className="text-lg text-gray-600">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Shipping Information</h1>
+          <p className="text-base sm:text-lg text-gray-600">
             Everything you need to know about our shipping options and policies
           </p>
         </div>
 
         {/* Shipping Options */}
-        <div className="bg-white rounded-lg shadow-sm mb-8">
-          <div className="p-6 border-b border-gray-200">
-            <h2 className="text-2xl font-semibold text-gray-900">Shipping Options</h2>
+        <div className="bg-white rounded-lg shadow-sm mb-6 sm:mb-8">
+          <div className="p-4 sm:p-6 border-b border-gray-200">
+            <h2 className="text-xl sm:text-2xl font-semibold text-gray-900">Shipping Options</h2>
           </div>
-          <div className="p-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-4 sm:p-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {shippingOptions.map((option, index) => {
                 const IconComponent = option.icon;
                 return (
-                  <div key={index} className="border border-gray-200 rounded-lg p-6">
+                  <div key={index} className="border border-gray-200 rounded-lg p-4 sm:p-6">
                     <div className="flex items-center mb-4">
                       <div className="p-2 bg-blue-100 rounded-lg mr-3">
-                        <IconComponent className="h-6 w-6 text-blue-600" />
+                        <IconComponent className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900">{option.name}</h3>
-                        <p className="text-sm text-gray-600">{option.time}</p>
+                        <h3 className="text-base sm:text-lg font-semibold text-gray-900">{option.name}</h3>
+                        <p className="text-xs sm:text-sm text-gray-600">{option.time}</p>
                       </div>
                     </div>
-                    <p className="text-blue-600 font-semibold mb-2">{option.cost}</p>
-                    <p className="text-gray-600 text-sm">{option.description}</p>
+                    <p className="text-blue-600 font-semibold mb-2 text-sm sm:text-base">{option.cost}</p>
+                    <p className="text-gray-600 text-xs sm:text-sm">{option.description}</p>
                   </div>
                 );
               })}
@@ -81,22 +81,22 @@ const ShippingInfo = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Shipping Zones */}
           <div className="bg-white rounded-lg shadow-sm">
-            <div className="p-6 border-b border-gray-200">
-              <h2 className="text-2xl font-semibold text-gray-900 flex items-center">
-                <MapPin className="h-6 w-6 text-blue-600 mr-2" />
+            <div className="p-4 sm:p-6 border-b border-gray-200">
+              <h2 className="text-lg sm:text-2xl font-semibold text-gray-900 flex items-center">
+                <MapPin className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600 mr-2" />
                 Shipping Zones & Transit Times
               </h2>
             </div>
-            <div className="p-6">
-              <div className="space-y-4">
+            <div className="p-4 sm:p-6">
+              <div className="space-y-3 sm:space-y-4">
                 {shippingZones.map((zone, index) => (
-                  <div key={index} className="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
+                  <div key={index} className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 sm:p-4 bg-gray-50 rounded-lg gap-2 sm:gap-0">
                     <div>
-                      <h3 className="font-semibold text-gray-900">{zone.region}</h3>
-                      <p className="text-sm text-gray-600">{zone.states}</p>
+                      <h3 className="font-semibold text-gray-900 text-sm sm:text-base">{zone.region}</h3>
+                      <p className="text-xs sm:text-sm text-gray-600">{zone.states}</p>
                     </div>
                     <div className="text-right">
                       <p className="font-medium text-blue-600">{zone.time}</p>

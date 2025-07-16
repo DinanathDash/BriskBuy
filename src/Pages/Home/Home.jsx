@@ -76,12 +76,12 @@ const Home = () => {
       <HeroCarousel />
 
       {/* Categories Section */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="pb-6 font-bold text-3xl">
+      <section className="py-8 sm:py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="pb-4 sm:pb-6 font-bold text-2xl sm:text-3xl">
             Shop by Category
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4">
             {[
               { name: 'Fashion', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop', category: 'fashion' },
               { name: 'Electronics', image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=400&fit=crop', category: 'electronics' },
@@ -91,7 +91,7 @@ const Home = () => {
               { name: 'Beauty', image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=400&fit=crop', category: 'beauty' }
             ].map((category, index) => (
               <Link key={index} to={`/products?category=${category.category}`}>
-                <div className="relative group cursor-pointer overflow-hidden rounded-lg h-32 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105">
+                <div className="relative group cursor-pointer overflow-hidden rounded-lg h-24 sm:h-32 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105">
                   {/* Background Image */}
                   <img
                     src={category.image}
@@ -99,8 +99,8 @@ const Home = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   {/* Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-3 z-10 backdrop-blur-xs bg-black/20">
-                    <h6 className="text-white font-bold text-xs">
+                  <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 z-10 backdrop-blur-xs bg-black/20">
+                    <h6 className="text-white font-bold text-xs sm:text-sm">
                       {category.name}
                     </h6>
                   </div>
@@ -115,13 +115,13 @@ const Home = () => {
       </section>
 
       {/* Featured Products Section */}
-      <section className="py-8">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between items-center mb-10">
-            <h2 className="font-bold text-3xl">
+      <section className="py-6 sm:py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-10 gap-4 sm:gap-0">
+            <h2 className="font-bold text-2xl sm:text-3xl">
               Featured Products
             </h2>
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className="w-full sm:w-auto">
               <Link to="/products">
                 View All
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -129,10 +129,10 @@ const Home = () => {
             </Button>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
             {featuredProducts.map((product) => (
               <Link key={product.id} to={`/products/${product.id}`}>
-                <div className="relative group cursor-pointer overflow-hidden rounded-lg h-48 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105">
+                <div className="relative group cursor-pointer overflow-hidden rounded-lg h-40 sm:h-48 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105">
                   {/* Background Image */}
                   <img
                     src={product.imageUrl}
@@ -140,32 +140,32 @@ const Home = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   {/* Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-3 z-10 backdrop-blur-xs bg-black/20">
+                  <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 z-10 backdrop-blur-xs bg-black/20">
                     <div className="text-white font-semibold text-xs mb-1 line-clamp-2 flex justify-between">
-                      <span className="flex-1 mr-2 truncate">{product.name}</span>
+                      <span className="flex-1 mr-1 sm:mr-2 truncate text-xs sm:text-sm">{product.name}</span>
 
                       <div className="flex items-center gap-1 flex-shrink-0">
-                        <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                        <Star className="h-2.5 w-2.5 sm:h-3 sm:w-3 fill-yellow-400 text-yellow-400" />
                         <span className="text-xs text-white">{product.ratings}</span>
                       </div>
                     </div>
 
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-white text-sm">
+                      <span className="font-bold text-white text-xs sm:text-sm">
                         ${product.price}
                       </span>
 
                       <div className="flex items-center gap-2">
                         <Button
                           size="sm"
-                          className="h-6 px-2 bg-white/20 hover:bg-white/30 text-white border-white/30"
+                          className="h-5 sm:h-6 px-1.5 sm:px-2 bg-white/20 hover:bg-white/30 text-white border-white/30"
                           onClick={(e) => {
                             e.preventDefault();
                             handleAddToCart(product);
                           }}
                           disabled={!product.isAvailable}
                         >
-                          <ShoppingCart className="h-3 w-3" />
+                          <ShoppingCart className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                         </Button>
                       </div>
                     </div>
@@ -181,12 +181,12 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-8 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-center mb-6 font-bold text-4xl">
+      <section className="py-6 sm:py-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-center mb-4 sm:mb-6 font-bold text-2xl sm:text-3xl lg:text-4xl">
             Why Choose BriskBuy?
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {[
               {
                 title: 'Fast Delivery',
@@ -211,9 +211,9 @@ const Home = () => {
             ].map((feature, index) => (
               <div key={index} className="col-span-1">
                 <Card className="text-center h-full">
-                  <CardContent className="p-4">
-                    <div className="text-4xl mb-2">{feature.icon}</div>
-                    <h6 className="font-semibold mb-2 text-lg">
+                  <CardContent className="p-4 sm:p-6">
+                    <div className="text-3xl sm:text-4xl mb-2">{feature.icon}</div>
+                    <h6 className="font-semibold mb-2 text-base sm:text-lg">
                       {feature.title}
                     </h6>
                     <p className="text-gray-600 text-sm">

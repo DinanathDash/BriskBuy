@@ -159,14 +159,14 @@ const Cart = () => {
 
   if (items.length === 0) {
     return (
-      <Container maxWidth="lg" className="py-16">
+      <Container maxWidth="lg" className="py-8 sm:py-16 px-4 sm:px-6">
         <div className="text-center">
-          <ShoppingBag className="h-24 w-24 mx-auto text-gray-400 mb-6" />
-          <Typography variant="h4" className="font-bold mb-4">Your cart is empty</Typography>
-          <Typography variant="body1" className="text-gray-600 mb-8">
+          <ShoppingBag className="h-16 w-16 sm:h-24 sm:w-24 mx-auto text-gray-400 mb-4 sm:mb-6" />
+          <Typography variant="h4" className="font-bold mb-4 text-xl sm:text-2xl lg:text-3xl">Your cart is empty</Typography>
+          <Typography variant="body1" className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">
             Looks like you haven't added any items to your cart yet.
           </Typography>
-          <Button asChild size="lg" className="mt-4">
+          <Button asChild size="lg" className="mt-4 w-full sm:w-auto">
             <Link to="/products">Continue Shopping</Link>
           </Button>
         </div>
@@ -175,44 +175,46 @@ const Cart = () => {
   }
 
   return (
-    <Container maxWidth="xl" className="py-8">
+    <Container maxWidth="xl" className="py-4 sm:py-8 px-4 sm:px-6">
       {/* Progress Steps */}
-      <div className="flex items-center justify-center mb-8">
-        <div className="flex items-center">
-          <div className="flex items-center justify-center w-8 h-8 bg-black text-white rounded-full text-sm font-medium">
+      <div className="flex items-center justify-center mb-6 sm:mb-8 overflow-x-auto">
+        <div className="flex items-center min-w-max">
+          <div className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 bg-black text-white rounded-full text-xs sm:text-sm font-medium">
             1
           </div>
-          <span className="ml-2 font-medium">Cart</span>
-          <ChevronRight className="mx-4 h-5 w-5 text-gray-400" />
-          <div className="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-500 rounded-full text-sm">
+          <span className="ml-1 sm:ml-2 font-medium text-sm sm:text-base">Cart</span>
+          <ChevronRight className="mx-2 sm:mx-4 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
+          <div className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 bg-gray-200 text-gray-500 rounded-full text-xs sm:text-sm">
             2
           </div>
-          <span className="ml-2 text-gray-500">Address</span>
-          <ChevronRight className="mx-4 h-5 w-5 text-gray-400" />
-          <div className="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-500 rounded-full text-sm">
+          <span className="ml-1 sm:ml-2 text-gray-500 text-sm sm:text-base">Address</span>
+          <ChevronRight className="mx-2 sm:mx-4 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
+          <div className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 bg-gray-200 text-gray-500 rounded-full text-xs sm:text-sm">
             3
           </div>
-          <span className="ml-2 text-gray-500">Payment</span>
+          <span className="ml-1 sm:ml-2 text-gray-500 text-sm sm:text-base">Payment</span>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-8">
         {/* Cart Items - Left Side */}
         <div className="lg:col-span-3">
           {/* Select All */}
-          <div className="flex items-center gap-3 mb-6 p-4 bg-gray-50 rounded-lg">
-            <Checkbox
-              checked={selectedItems.size === items.length && items.length > 0}
-              onCheckedChange={handleSelectAll}
-            />
-            <span className="font-medium">
-              {selectedItems.size}/{items.length} items selected
-            </span>
-            <div className="flex gap-4 ml-auto">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6 p-3 sm:p-4 bg-gray-50 rounded-lg">
+            <div className="flex items-center gap-3">
+              <Checkbox
+                checked={selectedItems.size === items.length && items.length > 0}
+                onCheckedChange={handleSelectAll}
+              />
+              <span className="font-medium text-sm sm:text-base">
+                {selectedItems.size}/{items.length} items selected
+              </span>
+            </div>
+            <div className="flex gap-2 sm:gap-4 ml-auto w-full sm:w-auto">
               <Button 
                 variant="ghost" 
                 size="sm" 
-                className="text-blue-600"
+                className="text-blue-600 flex-1 sm:flex-none text-xs sm:text-sm"
                 onClick={handleMoveToWishlist}
                 disabled={selectedItems.size === 0}
               >
@@ -221,7 +223,7 @@ const Cart = () => {
               <Button 
                 variant="ghost" 
                 size="sm" 
-                className="text-red-600"
+                className="text-red-600 flex-1 sm:flex-none text-xs sm:text-sm"
                 onClick={handleRemoveSelected}
                 disabled={selectedItems.size === 0}
               >
@@ -231,18 +233,18 @@ const Cart = () => {
           </div>
 
           {/* Cart Items List */}
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {items.map((item) => (
               <Card key={item.cartItemId} className="overflow-hidden">
                 <CardContent className="p-0">
-                  <div className="flex">
+                  <div className="flex flex-col sm:flex-row">
                     {/* Checkbox and Image */}
-                    <div className="flex items-start p-4 gap-4">
+                    <div className="flex items-start p-3 sm:p-4 gap-3 sm:gap-4">
                       <Checkbox
                         checked={selectedItems.has(item.cartItemId)}
                         onCheckedChange={(checked) => handleSelectItem(item.cartItemId, checked)}
                       />
-                      <div className="w-20 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden">
                         <img
                           src={item.imageUrl}
                           alt={item.name}
@@ -252,15 +254,15 @@ const Cart = () => {
                     </div>
 
                     {/* Product Details */}
-                    <div className="flex-1 p-4">
-                      <div className="flex justify-between items-start">
+                    <div className="flex-1 p-3 sm:p-4">
+                      <div className="flex flex-col sm:flex-row justify-between items-start gap-3 sm:gap-0">
                         <div className="flex-1">
-                          <Typography variant="h6" className="font-semibold text-lg mb-1">
+                          <Typography variant="h6" className="font-semibold text-base sm:text-lg mb-1">
                             {item.name}
                           </Typography>
 
                           {/* Product Attributes */}
-                          <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
+                          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600 mb-3">
                             <span className="flex items-center gap-1">
                               <span className="w-2 h-2 bg-gray-400 rounded-full"></span>
                               1-2 yr
@@ -275,20 +277,20 @@ const Cart = () => {
                             </span>
                           </div>
 
-                          <Typography variant="h6" className="font-bold text-xl">
+                          <Typography variant="h6" className="font-bold text-lg sm:text-xl">
                             ${item.price}
                           </Typography>
                         </div>
 
-                        <div className='flex flex-col items-end space-y-6'>
+                        <div className='flex flex-row sm:flex-col items-center sm:items-end space-x-4 sm:space-x-0 sm:space-y-6 w-full sm:w-auto justify-between sm:justify-start'>
                           {/* Remove Button */}
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="w-8"
+                            className="w-8 h-8"
                             onClick={() => removeFromCart(item.cartItemId)}
                           >
-                            <Trash2 className="h-4 w-4" />
+                            <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
                           </Button>
                           {/* Quantity Controls */}
                           <div className="flex items-center border rounded-md">

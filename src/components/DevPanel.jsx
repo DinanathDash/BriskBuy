@@ -24,7 +24,7 @@ const DevPanel = () => {
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      {/* <Card className="w-64">
+      <Card className="w-64">
         <CardHeader className="pb-2">
           <CardTitle className="text-sm">Dev Panel</CardTitle>
         </CardHeader>
@@ -39,7 +39,7 @@ const DevPanel = () => {
             {uploading ? 'Uploading...' : 'Upload Sample Products'}
           </Button>
         </CardContent>
-      </Card> */}
+      </Card>
     </div>
   );
 };

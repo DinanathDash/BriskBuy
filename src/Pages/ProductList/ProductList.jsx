@@ -143,32 +143,32 @@ const ProductList = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <Container maxWidth="xl">
+    <div className="min-h-screen bg-gray-50 py-4 sm:py-8">
+      <Container maxWidth="xl" className="px-4 sm:px-6">
         {/* Header */}
-        <div className="mb-4">
-          <Typography variant="h4" component="h1" className="font-bold mb-2">
+        <div className="mb-4 sm:mb-6">
+          <Typography variant="h4" component="h1" className="font-bold mb-2 text-xl sm:text-2xl lg:text-3xl">
             {search ? `Search Results for "${search}"` :
               category ? `${category.charAt(0).toUpperCase() + category.slice(1)} Products` :
                 'All Products'}
           </Typography>
-          <Typography variant="body1" className="text-gray-600">
+          <Typography variant="body1" className="text-gray-600 text-sm sm:text-base">
             {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} found
           </Typography>
         </div>
 
-        <div className="flex gap-6">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
           {/* Filters Sidebar */}
-          <div className={`w-auto space-y-6 ${showFilters ? 'block' : 'hidden lg:block'}`}>
+          <div className={`w-full lg:w-auto space-y-4 lg:space-y-6 ${showFilters ? 'block' : 'hidden lg:block'}`}>
             <Card>
-              <CardHeader className="-mb-6">
-                <Typography variant="h6" className="font-semibold">Filters</Typography>
+              <CardHeader className="-mb-4 lg:-mb-6">
+                <Typography variant="h6" className="font-semibold text-base sm:text-lg">Filters</Typography>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-4 lg:space-y-6 p-4 lg:p-6">
                 {/* Categories */}
                 <div>
-                  <Typography variant="subtitle2" className="font-medium pb-2">Categories</Typography>
-                  <div className="space-y-2">
+                  <Typography variant="subtitle2" className="font-medium pb-2 text-sm sm:text-base">Categories</Typography>
+                  <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
                     {CATEGORIES.map(cat => (
                       <div key={cat} className="flex items-center space-x-2">
                         <Checkbox
@@ -176,7 +176,7 @@ const ProductList = () => {
                           checked={filters.categories.includes(cat)}
                           onCheckedChange={(checked) => handleCategoryFilter(cat, checked)}
                         />
-                        <label htmlFor={cat} className="text-sm capitalize cursor-pointer">
+                        <label htmlFor={cat} className="text-xs sm:text-sm capitalize cursor-pointer">
                           {cat}
                         </label>
                       </div>
@@ -186,17 +186,17 @@ const ProductList = () => {
 
                 {/* Price Range */}
                 <div>
-                  <Typography variant="subtitle2" className="font-medium pb-2">Price Range</Typography>
+                  <Typography variant="subtitle2" className="font-medium pb-2 text-sm sm:text-base">Price Range</Typography>
                   <Select
                     value={filters.priceRange || ''}
                     onValueChange={(value) => setFilters(prev => ({ ...prev, priceRange: value }))}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="text-xs sm:text-sm">
                       <SelectValue placeholder="Select price range" />
                     </SelectTrigger>
                     <SelectContent>
                       {PRICE_RANGES.map(range => (
-                        <SelectItem key={range.label} value={range.label}>
+                        <SelectItem key={range.label} value={range.label} className="text-xs sm:text-sm">
                           {range.label}
                         </SelectItem>
                       ))}
@@ -206,17 +206,17 @@ const ProductList = () => {
 
                 {/* Rating */}
                 <div>
-                  <Typography variant="subtitle2" className="font-medium pb-2">Minimum Rating</Typography>
+                  <Typography variant="subtitle2" className="font-medium pb-2 text-sm sm:text-base">Minimum Rating</Typography>
                   <Select
                     value={filters.minRating?.toString() || ''}
                     onValueChange={(value) => setFilters(prev => ({ ...prev, minRating: parseFloat(value) }))}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="text-xs sm:text-sm">
                       <SelectValue placeholder="Select minimum rating" />
                     </SelectTrigger>
                     <SelectContent>
                       {RATING_OPTIONS.map(option => (
-                        <SelectItem key={option.value} value={option.value.toString()}>
+                        <SelectItem key={option.value} value={option.value.toString()} className="text-xs sm:text-sm">
                           {option.label}
                         </SelectItem>
                       ))}
@@ -230,37 +230,37 @@ const ProductList = () => {
           {/* Products */}
           <div className="flex-1">
             {/* Controls */}
-            <div className="-mt-14 mb-5 flex justify-between items-center">
+            <div className="mb-4 lg:mb-5 flex flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
               <div className="flex items-center gap-4">
                 <Button
                   variant="outline"
                   size="sm"
-                  className="lg:hidden"
+                  className="lg:hidden text-xs sm:text-sm"
                   onClick={() => setShowFilters(!showFilters)}
                 >
-                  <Filter className="h-4 w-4 mr-2" />
+                  <Filter className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
                   Filters
                 </Button>
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
                 <Select
                   value={filters.sortBy}
                   onValueChange={(value) => setFilters(prev => ({ ...prev, sortBy: value }))}
                 >
-                  <SelectTrigger className="w-48">
+                  <SelectTrigger className="w-36 text-xs sm:text-sm">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
                     {SORT_OPTIONS.map(option => (
-                      <SelectItem key={option.value} value={option.value}>
+                      <SelectItem key={option.value} value={option.value} className="text-xs sm:text-sm">
                         {option.label}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
 
-                <div className="flex border rounded-md">
+                <div className="hidden sm:flex border rounded-md">
                   <Button
                     variant={viewMode === 'grid' ? 'default' : 'ghost'}
                     size="sm"
@@ -281,20 +281,20 @@ const ProductList = () => {
 
             {/* Products Grid/List */}
             {filteredProducts.length === 0 ? (
-              <div className="text-center py-16">
-                <Typography variant="h6" className="text-gray-500 mb-4">
+              <div className="text-center py-12 sm:py-16">
+                <Typography variant="h6" className="text-gray-500 mb-4 text-base sm:text-lg">
                   No products found
                 </Typography>
-                <Button asChild>
+                <Button asChild className="text-sm sm:text-base">
                   <Link to="/products">Browse All Products</Link>
                 </Button>
               </div>
             ) : (
-              <div className={`${viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4' : 'space-y-4'}`}>
+              <div className={`${viewMode === 'grid' ? 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4' : 'space-y-4'}`}>
                 {filteredProducts.map((product) => (
                   viewMode === 'grid' ? (
                     <Link key={product.id} to={`/products/${product.id}`}>
-                      <div className="relative group cursor-pointer overflow-hidden rounded-lg h-48 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105">
+                      <div className="relative group cursor-pointer overflow-hidden rounded-lg h-40 sm:h-48 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105">
                         {/* Background Image */}
                         <img
                           src={product.imageUrl}
@@ -302,32 +302,32 @@ const ProductList = () => {
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
                         {/* Content */}
-                        <div className="absolute bottom-0 left-0 right-0 p-3 z-10 backdrop-blur-xs bg-black/20">
+                        <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 z-10 backdrop-blur-xs bg-black/20">
                           <div className="text-white font-semibold text-xs mb-1 line-clamp-2 flex justify-between">
-                            <span className="flex-1 mr-2 truncate">{product.name}</span>
+                            <span className="flex-1 mr-1 sm:mr-2 truncate text-xs sm:text-sm">{product.name}</span>
 
                             <div className="flex items-center gap-1 flex-shrink-0">
-                              <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                              <Star className="h-2.5 w-2.5 sm:h-3 sm:w-3 fill-yellow-400 text-yellow-400" />
                               <span className="text-xs text-white">{product.ratings}</span>
                             </div>
                           </div>
 
                           <div className="flex items-center justify-between">
-                            <Typography variant="h6" className="font-bold text-white text-sm">
+                            <Typography variant="h6" className="font-bold text-white text-xs sm:text-sm">
                               ${product.price}
                             </Typography>
 
                             <div className="flex items-center gap-2">
                               <Button
                                 size="sm"
-                                className="h-6 px-2 bg-white/20 hover:bg-white/30 text-white border-white/30"
+                                className="h-5 sm:h-6 px-1.5 sm:px-2 bg-white/20 hover:bg-white/30 text-white border-white/30"
                                 onClick={(e) => {
                                   e.preventDefault();
                                   handleAddToCart(product);
                                 }}
                                 disabled={!product.isAvailable}
                               >
-                                <ShoppingCart className="h-3 w-3" />
+                                <ShoppingCart className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                               </Button>
                             </div>
                           </div>
@@ -339,10 +339,10 @@ const ProductList = () => {
                     </Link>
                   ) : (
                     <Card key={product.id} className="hover:shadow-lg transition-shadow relative">
-                      <div className="flex p-4">
+                      <div className="flex flex-col sm:flex-row p-3 sm:p-4">
                         {/* Product Image */}
-                        <Link to={`/products/${product.id}`} className="flex-shrink-0 relative">
-                          <div className="w-40 h-40 overflow-hidden rounded-lg bg-gray-100 relative">
+                        <Link to={`/products/${product.id}`} className="flex-shrink-0 relative mb-3 sm:mb-0">
+                          <div className="w-full sm:w-32 lg:w-40 h-32 sm:h-32 lg:h-40 overflow-hidden rounded-lg bg-gray-100 relative">
                             <img
                               src={product.imageUrl}
                               alt={product.name}

@@ -74,10 +74,10 @@ const ProductDetails = () => {
 
   if (!product) {
     return (
-      <Container maxWidth="lg" className="py-8">
+      <Container maxWidth="lg" className="py-4 sm:py-8 px-4 sm:px-6">
         <div className="text-center">
-          <Typography variant="h5" className="mb-4">Product not found</Typography>
-          <Button onClick={() => navigate('/products')}>
+          <Typography variant="h5" className="mb-4 text-lg sm:text-xl">Product not found</Typography>
+          <Button onClick={() => navigate('/products')} className="w-full sm:w-auto">
             Back to Products
           </Button>
         </div>
@@ -86,19 +86,19 @@ const ProductDetails = () => {
   }
 
   return (
-    <Container maxWidth="lg" className="py-8">
+    <Container maxWidth="lg" className="py-4 sm:py-8 px-4 sm:px-6">
       <Button 
         variant="ghost" 
         onClick={() => navigate(-1)}
-        className="mb-6"
+        className="mb-4 sm:mb-6 w-full sm:w-auto"
       >
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back
       </Button>
 
-      <Grid container spacing={8}>
+      <Grid container spacing={4} className="sm:!gap-8">
         <Grid item xs={12} md={6}>
-          <div className="aspect-square overflow-hidden rounded-lg">
+          <div className="aspect-square overflow-hidden rounded-lg mb-4 md:mb-0">
             <img 
               src={product.imageUrl} 
               alt={product.name}
@@ -108,21 +108,21 @@ const ProductDetails = () => {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <div>
               <Badge variant="secondary" className="mb-2">
                 {product.category}
               </Badge>
-              <Typography variant="h3" component="h1" className="font-bold mb-2">
+              <Typography variant="h3" component="h1" className="font-bold mb-2 text-xl sm:text-2xl lg:text-3xl">
                 {product.name}
               </Typography>
-              <div className="flex items-center gap-2 mb-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 mb-4">
                 <div className="flex items-center">
-                  <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                  <span className="ml-1 font-medium">{product.ratings}</span>
+                  <Star className="h-4 w-4 sm:h-5 sm:w-5 fill-yellow-400 text-yellow-400" />
+                  <span className="ml-1 font-medium text-sm sm:text-base">{product.ratings}</span>
                 </div>
-                <span className="text-gray-500">•</span>
-                <span className={`text-sm font-medium ${
+                <span className="text-gray-500 hidden sm:inline">•</span>
+                <span className={`text-xs sm:text-sm font-medium ${
                   product.stock <= 10 ? 'text-red-600' : 
                   product.stock <= 20 ? 'text-orange-600' : 'text-green-600'
                 }`}>
@@ -133,14 +133,14 @@ const ProductDetails = () => {
                   }
                 </span>
               </div>
-              <Typography variant="h4" className="font-bold text-primary mb-4">
+              <Typography variant="h4" className="font-bold text-primary mb-4 text-lg sm:text-xl lg:text-2xl">
                 ${product.price}
               </Typography>
             </div>
 
             <div>
-              <Typography variant="h6" className="font-semibold mb-2">Description</Typography>
-              <Typography variant="body1" className="text-gray-600">
+              <Typography variant="h6" className="font-semibold mb-2 text-base sm:text-lg">Description</Typography>
+              <Typography variant="body1" className="text-gray-600 text-sm sm:text-base">
                 {product.description}
               </Typography>
             </div>
