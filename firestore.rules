@@ -1,0 +1,59 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Users can read and write their own user document
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Products - read-only for everyone (pre-populated data)
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // Categories - read-only for everyone (pre-populated data)
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // Orders - users can only access their own orders
+    match /orders/{orderId} {
+      allow read, write: if request.auth != null && 
+        request.auth.uid == resource.data.userId;
+      allow create: if request.auth != null && 
+        request.auth.uid == request.resource.data.userId;
+    }
+    
+    // Cart - users can only access their own cart
+    match /carts/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Reviews - users can read all, but only write their own
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create: if request.auth != null && 
+        request.auth.uid == request.resource.data.userId;
+      allow update, delete: if request.auth != null && 
+        request.auth.uid == resource.data.userId;
+    }
+    
+    // Wishlist - users can only access their own wishlist items
+    // This matches the structure your code uses: individual documents with userId field
+    match /wishlists/{wishlistId} {
+      allow read, write: if request.auth != null && 
+        request.auth.uid == resource.data.userId;
+      allow create: if request.auth != null && 
+        request.auth.uid == request.resource.data.userId;
+    }
+    
+    // Connection test - allow read access for Firebase connection testing
+    match /_test/{document=**} {
+      allow read: if true;
+    }
+  }
+}

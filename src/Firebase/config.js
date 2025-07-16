@@ -36,11 +36,8 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase services
 export const auth = getAuth(app);
 
-// Initialize Firestore with settings to avoid CORS issues
-export const db = initializeFirestore(app, {
-    experimentalForceLongPolling: false, // Disable long polling
-    experimentalAutoDetectLongPolling: false,
-});
+// Initialize Firestore with standard configuration
+export const db = getFirestore(app);
 
 export const storage = getStorage(app);
 
